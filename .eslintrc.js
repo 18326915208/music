@@ -24,6 +24,7 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'semi': 0 //  eslint 不检查分号  结尾的分号，你加也可以，不加也可以
   }
 }

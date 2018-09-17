@@ -2,7 +2,7 @@
   <div class="music">
     <header>
       <div class="m-name">
-        {{music.name}}--{{music.singer}}
+        {{music.name}}——{{music.singer}}
       </div>
 
       <div class="m-menu">
