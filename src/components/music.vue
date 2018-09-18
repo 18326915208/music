@@ -25,6 +25,7 @@
       </div>
     </transition>
     <div class="m-body">
+      <router-link to='/exp'>哈哈</router-link>
       <h3>{{music.name}}</h3>
       <h4>{{music.singer}}</h4>
       <div class="m-image">
@@ -47,6 +48,7 @@
 
 <script>
 import axios from 'axios'
+import Exp from '../components/exp'
 export default {
   name: 'Music',
   data () {
@@ -60,6 +62,9 @@ export default {
       isRotate: true,
       isPlay: true
     }
+  },
+  components: {
+    Exp
   },
   created () {
     this.getMusic(this.id)
@@ -89,12 +94,12 @@ export default {
       document.getElementById('audio').pause();
     },
     pre(){
-      this.isRotate = false;
+      this.isRotate = true;
       this.id--;
       this.getMusic(this.id);
     },
     next(){
-      this.isRotate = false;
+      this.isRotate = true;
       this.id++;
       this.getMusic(this.id);
     }
