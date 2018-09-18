@@ -30,7 +30,8 @@
       <h4>{{music.singer}}</h4>
       <div class="m-image">
         <div>
-          <audio :src="this.music.url" id="audio" autoplay="autoplay"></audio>
+          <!-- <audio :src="this.music.url" id="audio" autoplay='autoplay'></audio> -->
+          <audio :src="this.music.url" id="audio"></audio>
         </div>
         <img :class="{isPause:isPause,rotate:isRotate}" :src="music.img" alt="">
       </div>
@@ -47,8 +48,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Exp from '../components/exp'
+import axios from 'axios';
+import Exp from '../components/exp';
 export default {
   name: 'Music',
   data () {
@@ -59,9 +60,8 @@ export default {
       id: 0,
       MList: '',
       isPause: false,
-      isRotate: true,
-      isPlay: true,
-      isPlaying:false
+      isRotate: false,
+      isPlay: false
     }
   },
   components: {
@@ -98,11 +98,13 @@ export default {
       let that = this;
       this.isPause = false;
       this.isPlay = true;
+      this.isRotate = true;
+      document.getElementById('audio').setAttribute('autoplay','autoplay');
       document.getElementById('audio').play();
       //音频播放完 自动进入下一首 ended：返回音频的播放是否已结束
       document.getElementById('audio').addEventListener('ended', function () {  
           // alert('over');
-          that.next()
+          that.next();
       }, false);
     },
     pause(){
