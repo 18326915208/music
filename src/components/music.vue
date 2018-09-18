@@ -60,7 +60,8 @@ export default {
       MList: '',
       isPause: false,
       isRotate: true,
-      isPlay: true
+      isPlay: true,
+      isPlaying:false
     }
   },
   components: {
@@ -83,16 +84,6 @@ export default {
         this.music = res[p];
       })
     },
-    play(){
-      this.isPause = false;
-      this.isPlay = true;
-      document.getElementById('audio').play();
-    },
-    pause(){
-      this.isPause = true;
-      this.isPlay = false;
-      document.getElementById('audio').pause();
-    },
     pre(){
       this.isRotate = true;
       this.id--;
@@ -102,6 +93,22 @@ export default {
       this.isRotate = true;
       this.id++;
       this.getMusic(this.id);
+    },
+    play(){
+      let that = this;
+      this.isPause = false;
+      this.isPlay = true;
+      document.getElementById('audio').play();
+      //音频播放完 自动进入下一首 ended：返回音频的播放是否已结束
+      document.getElementById('audio').addEventListener('ended', function () {  
+          // alert('over');
+          that.next()
+      }, false);
+    },
+    pause(){
+      this.isPause = true;
+      this.isPlay = false;
+      document.getElementById('audio').pause();
     }
   }
 }
