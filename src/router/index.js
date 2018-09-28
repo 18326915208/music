@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Music from '@/components/music'
-import Exp from '@/components/exp'
+import Login from '@/components/login'
+import Index from '@/components/index'
 
 Vue.use(Router);
 
@@ -13,9 +14,14 @@ export default new Router({
       component: Music
     },
     {
-      path: '/exp',
-      name: 'Exp',
-      component: Exp
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/index',
+      name: 'Index',
+      component: Index
     }
   ]
 })

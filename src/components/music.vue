@@ -25,7 +25,7 @@
       </div>
     </transition>
     <div class="m-body">
-      <router-link to='/exp'>哈哈</router-link>
+      <router-link to='/login'>toLogin</router-link>
       <h3>{{music.name}}</h3>
       <h4>{{music.singer}}</h4>
       <div class="m-image">
@@ -48,8 +48,10 @@
 </template>
 
 <script>
-import axios from 'axios';
-import Exp from '../components/exp';
+// import axios from 'axios';
+// 引用axios
+var axios = require('axios');
+import Login from '../components/login';
 export default {
   name: 'Music',
   data () {
@@ -65,23 +67,24 @@ export default {
     }
   },
   components: {
-    Exp
+    Login
   },
   created () {
-    this.getMusic(this.id)
+    this.getMusic(this.id);
+    // this.play();
   },
   methods: {
-    getMusic(p){
+    getMusic(m){
       axios.get(this.apiUrl).then((re) => {
         let res = re.data.music;
         this.MList = res;
-        if(p>res.length-1){
-          p = 0;
-        }else if(p<0){
-          p = res.length-1;
+        if(m>res.length-1){
+          m = 0;
+        }else if(m<0){
+          m = res.length-1;
         }
-        this.id = p;
-        this.music = res[p];
+        this.id = m;
+        this.music = res[m];
       })
     },
     pre(){
